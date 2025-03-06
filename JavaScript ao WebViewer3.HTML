@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compartilhar</title>
+</head>
+<body>
+    <h1>Compartilhe nas suas redes sociais</h1>
+    <button id="shareButton">Compartilhar</button>
+
+    <script>
+        document.getElementById('shareButton').onclick = function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Título do conteúdo',
+                    text: 'Descrição do conteúdo',
+                    url: 'https://link-do-conteudo.com'
+                }).then(() => {
+                    console.log('Conteúdo compartilhado');
+                }).catch((error) => {
+                    console.log('Erro ao compartilhar', error);
+                });
+            } else {
+                alert('O compartilhamento não é suportado no seu dispositivo.');
+            }
+        }
+    </script>
+</body>
+</html>
